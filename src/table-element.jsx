@@ -11,7 +11,7 @@ function TableElement(props) {
                 <span className={"absolute top-0 text-xs right-2"}>{props.atomicNumber}</span></span>
             </>
         ) : (
-            <span className={"relative border-4 border-bg-white bg-green-800 p-4 capitalize"}>
+            <span className={"relative border-4 border-bg-white bg-green-800 p-4 uppercase"}>
                 {props.symbol}
                 <span className={"absolute top-0 text-xs right-2"}>{props.atomicNumber}</span>
             </span>
