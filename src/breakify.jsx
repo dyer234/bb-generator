@@ -1,5 +1,7 @@
 import Elements from './elements'
 import React from 'react'
+
+// @ts-ignore
 import TableElement from "./table-element.jsx";
 
 function convertElementsToMap(elements) {

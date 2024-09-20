@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+
+// @ts-ignore
 import Breakify from './breakify.jsx'
 
 function App() {
