@@ -12,15 +12,23 @@ function App() {
 
   return (
     <>
-        <div className={"h-screen bg-green-950 relative text-white "}>
+
+        <div className={"h-screen bg-green-950 relative text-white"}>
+            <div className={"pl-10 pt-10"}>Breaking Bad Logo Generator</div>
             <div className={"fixed text-8xl top-[20%] left-1/2 transform -translate-x-1/2 text-4xl"}>
-            <Breakify firstName={firstName} lastName={lastName}/>
+                <Breakify firstName={firstName} lastName={lastName}/>
             </div>
-                <div className={"fixed top-[60%] left-1/2 transform -translate-x-1/2 text-4xl text-black"}>
-            <input className={"rounded border-4 border-b-gray-50"} placeholder={"First Word"} value={firstName} onChange={(e) => {setFirstName(e.target.value)}}/>
-            <input className={"ml-10 rounded border-4 border-b-gray-50"} placeholder={"Second Word"} value={lastName} onChange={(e) => {setLastName(e.target.value)}}/>
+            <div className={"fixed top-[60%] left-1/2 transform -translate-x-1/2 text-4xl text-black"}>
+                <input className={"rounded border-4 border-b-gray-50"} placeholder={"First Word"} value={firstName}
+                       onChange={(e) => {
+                           setFirstName(e.target.value)
+                       }}/>
+                <input className={"ml-10 rounded border-4 border-b-gray-50 mt-2"} placeholder={"Second Word"}
+                       value={lastName} onChange={(e) => {
+                    setLastName(e.target.value)
+                }}/>
             </div>
-            </div>
+        </div>
     </>
   )
 }

@@ -70,13 +70,20 @@ function Breakify(props) {
 
 
     return (
-        <>
+        props.firstName.length > 1 || props.lastName.length > 1 ? (
+            <>
             <div className={"relative"}>
                 <div className={""}>{convertToBreak(props.firstName)}</div>
-                <div className={"ml-20 mt-14 capitalize"}>{convertToBreak(props.lastName)}</div>
+                <div className={"ml-20 mt-14"}>{convertToBreak(props.lastName)}</div>
             </div>
-        </>
-    )
+            </>
+        ) : (
+            <>
+            <div className={"text-3xl"}>Create your Logo</div>
+            </>
+        )
+    );
+
 }
 
 
