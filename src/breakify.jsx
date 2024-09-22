@@ -70,23 +70,25 @@ function Breakify(props) {
 
 
     return (
-        props.firstName.length >= 1 || props.lastName.length >= 1 ? (
-            <>
-            <div className={"relative"}>
-                <div className={""}>{convertToBreak(props.firstName)}</div>
-                <div className={"ml-20 mt-14"}>{convertToBreak(props.lastName)}</div>
-            </div>
-            </>
-        ) : (
-            <>
-            <div className={"relative"}>
-                <div className={""}>{convertToBreak("Breaking")}</div>
-                <div className={"ml-20 mt-14"}>{convertToBreak("Bad")}</div>
-            </div>
-            </>
-        )
-    );
+        <div id={"bb-logo"} className={"bg-green-950 mt-20 pt-32 pb-20"}>
 
+            {props.firstName.length >= 1 || props.lastName.length >= 1 ? (
+                <>
+                    <div>
+                        <div className={""}>{convertToBreak(props.firstName)}</div>
+                        <div className={"ml-18 sm:mt-12 lg:mt-16 mt-8"}>{convertToBreak(props.lastName)}</div>
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div>
+                        <div className={""}>{convertToBreak("Breaking")}</div>
+                        <div className={"ml-18 sm:mt-12 lg:mt-16 mt-8"}>{convertToBreak("Bad")}</div>
+                    </div>
+                </>
+            )}
+        </div>
+    );
 }
 
 
