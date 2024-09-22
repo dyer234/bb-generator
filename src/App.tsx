@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-import DownloadLogo from "./download-logo.jsx";
 
 // @ts-ignore
 import Breakify from './breakify.jsx'
@@ -16,7 +15,7 @@ function App() {
         <div className={"text-white"}>
             <div className={"flex"}>
                 <div className={"pl-2 sm:pl-10 pt-10"}>Breaking Bad Logo Generator</div>
-                {/*<DownloadLogo/>*/}
+
             </div>
             <div
                 className={"mt-4 text-center justify-center mx-auto text-xl sm:text-2xl text-gray-700"}>
