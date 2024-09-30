@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 // @ts-ignore
-import Breakify from './breakify.jsx'
+import Breakify from './breakify.jsx';
 
 function App() {
 
@@ -15,7 +15,6 @@ function App() {
         <div className={"text-white"}>
             <div className={"flex"}>
                 <div className={"pl-2 sm:pl-10 pt-10"}>Breaking Bad Logo Generator</div>
-
             </div>
             <div
                 className={"mt-4 text-center justify-center mx-auto text-xl sm:text-2xl text-gray-700"}>
@@ -29,7 +28,7 @@ function App() {
                 }}/>
 
             </div>
-            <div className={"justify-center text-center mt-10 text-6xl sm:text-6xl lg:text-9xl"}>
+            <div className={"justify-center text-center mt-10 md:mt-32 text-6xl sm:text-6xl md:text-9xl"}>
                 <Breakify firstName={firstName} lastName={lastName}/>
             </div>
         </div>

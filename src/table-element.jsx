@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function TableElement(props) {
+function PeriodicElement(props) {
     return (
         props.symbol.length > 1 ? (
             <>
@@ -19,4 +19,10 @@ function TableElement(props) {
     );
 }
 
-export default TableElement;
+export function UnstyledCharacter(props) {
+    return (
+        <span key={props.charKey}>{props.symbol}</span>
+    );
+}
+
+export default PeriodicElement;

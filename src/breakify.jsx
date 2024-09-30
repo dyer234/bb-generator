@@ -1,92 +1,60 @@
-import Elements from './elements'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import BreakifyRow from "./breakify-row.jsx";
+import {convertToBreak} from "./convert-to-bb-logo.jsx";
 
-// @ts-ignore
-import TableElement from "./table-element.jsx";
-
-function convertElementsToMap(elements) {
-    let map = {}
-    elements.forEach((element, index) => {
-        map[element.toLowerCase()] = index + 1
-    })
-    return map
-}
-
-const breakifyElements = convertElementsToMap(Elements)
-console.log(breakifyElements)
 
 function Breakify(props) {
 
-
-    const convertToBreak = (text) => {
-        let isFound = false;
-        let splitWords = [...text];
-        let result = [];
-
-        for (let index = 0; index < splitWords.length; index++) {
-            const char = splitWords[index]
-            const nextChar = splitWords[index + 1] ? splitWords[index + 1].toLowerCase() : null;
-            let symbol = null
-            if (nextChar != null) {
-                symbol = char.toLowerCase() + nextChar;
-            }
+    const [allFoundFirstCombinationsWords, setAllFoundFirstCombinationsWords] = useState([])
+    const [allFoundSecondCombinationsWords, setAllFoundSecondCombinationsWords] = useState([])
+    const [currentFirstWord, setCurrentFirstWord] = useState("")
+    const [currentSecondWord, setCurrentSecondWord] = useState("")
 
 
-            if (!isFound && symbol != null && symbol in breakifyElements) {
-                console.log("Character found:", symbol);
-                isFound = true;
-                result.push(
-                        <TableElement symbol={symbol} atomicNumber={breakifyElements[symbol]} key={index}/>
-                    )
-                ;
-                index++; // Skip the next character
-            } else {
-                console.log("Character not found:", char);
-                result.push(<span key={index}>{char}</span>);
-            }
+    useEffect(() => {
+
+        if (props.firstName.length !== 0 || props.lastName.length !== 0) {
+            let firstWordCombinations = convertToBreak(props.firstName)
+            setAllFoundFirstCombinationsWords(firstWordCombinations)
+            setCurrentFirstWord(0)
+
+
+            let secondWordCombinations = convertToBreak(props.lastName)
+            setAllFoundSecondCombinationsWords(secondWordCombinations)
+            setCurrentSecondWord(0)
+        }
+        else {
+            let firstWordCombinations = convertToBreak("Breaking")
+            setAllFoundFirstCombinationsWords(firstWordCombinations)
+            setCurrentFirstWord(0)
+
+
+            let secondWordCombinations = convertToBreak("Bad")
+            setAllFoundSecondCombinationsWords(secondWordCombinations)
+            setCurrentSecondWord(0)
         }
 
-        // Check for a single character if none was found
-        if (!isFound) {
-            result = [];
-            for (let index = 0; index < splitWords.length; index++) {
-                const char = splitWords[index];
-                if (!isFound && char.toLowerCase() in breakifyElements) {
-                    isFound = true;
-                    console.log("Character found:", char);
-                    result.push(
-                        <TableElement symbol={char} atomicNumber={breakifyElements[char.toLowerCase()]} key={index}/>
-                    );
-                } else {
-                    console.log("Character not found:", char);
-                    result.push(<span key={index}>{char}</span>);
-                }
-            }
-            ;
-        }
 
-        return result; // Return the accumulated results
-    };
+    }, [props.firstName, props.lastName]);
+
+
 
 
     return (
-        <div id={"bb-logo"} className={"bg-green-950 mt-20 pt-32 pb-20"}>
+        <div id={"bb-logo"} className={"bg-green-950 pt-20 pb-20"}>
 
-            {props.firstName.length >= 1 || props.lastName.length >= 1 ? (
                 <>
-                    <div>
-                        <div className={""}>{convertToBreak(props.firstName)}</div>
-                        <div className={"ml-18 sm:mt-12 lg:mt-16 mt-8"}>{convertToBreak(props.lastName)}</div>
+                    <div className="flex flex-col items-center justify-center  w-full">
+                        {/* Full-width row with Chevrons and text */}
+                        <div id={"firstWord"} className="flex w-full items-center justify-between px-4">
+                            <BreakifyRow max={allFoundFirstCombinationsWords.length} elements={allFoundFirstCombinationsWords} idx={currentFirstWord}/>
+                        </div>
+                        <div id={"secondWord"} className="flex w-full items-center justify-between px-4 sm:mt-7 md:mt-12 mt-4  text-center">
+                            <BreakifyRow max={allFoundSecondCombinationsWords.length} elements={allFoundSecondCombinationsWords} idx={currentSecondWord}/>
+                        </div>
                     </div>
                 </>
-            ) : (
-                <>
-                    <div>
-                        <div className={""}>{convertToBreak("Breaking")}</div>
-                        <div className={"ml-18 sm:mt-12 lg:mt-16 mt-8"}>{convertToBreak("Bad")}</div>
-                    </div>
-                </>
-            )}
+
         </div>
     );
 }

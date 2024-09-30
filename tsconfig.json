@@ -1,7 +1,7 @@
 {
   "files": [],
+  "exclude": ["node_modules", "dist"], // Keep *.js excluded if needed, no need to exclude *.jsx
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+    { "path": "./tsconfig.app.json" }
   ]
 }
