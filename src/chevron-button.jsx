@@ -40,10 +40,18 @@ const ChevronButton = (props) => {
 
     return (
         <div className={"text-black"}>
-            <CustomButton handleClick={props.handleClick} icon={icon}/>
+            <CustomButton enabled={props.enabled} handleClick={props.handleClick} icon={icon}/>
         </div>
     );
 };
+
+ChevronButton.defaultProps = {
+    enabled: true,
+    direction: "right",
+    handleClick: () => {
+        console.log("Default Handler Button");
+    }
+}
 
 
 export default ChevronButton;

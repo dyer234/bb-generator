@@ -23,21 +23,14 @@ const BreakifyRow = (props) => {
 
             setCurrentElement(currentElement + 1);
         }
-        else {
-            setCurrentElement(0);
-        }
     }
 
     const handlePreviousElement = () => {
-        let max = props.elements.length - 1;
         console.log("previous element");
         console.log("Current Element:", currentElement);
         if (currentElement > 0) {
 
             setCurrentElement(currentElement - 1);
-        }
-        else {
-            setCurrentElement(max);
         }
     }
 
@@ -48,7 +41,7 @@ const BreakifyRow = (props) => {
                 {/* Left Chevron */}
                 <div className=" flex items-center align-middle">
                     { props.elements.length > 1 && (
-                    <ChevronButton handleClick={() => {  handlePreviousElement() }} direction={"left"}/>
+                    <ChevronButton enabled={currentElement > 0} handleClick={() => {  handlePreviousElement() }} direction={"left"}/>
                     )}
                 </div>
 
@@ -60,7 +53,7 @@ const BreakifyRow = (props) => {
                 {/* Right Chevron */}
                 <div className="text-right flex items-center">
                     { props.elements.length > 1 && (
-                    <ChevronButton handleClick={handleNextElement}/>
+                    <ChevronButton enabled={currentElement < props.elements.length - 1} handleClick={handleNextElement}/>
                     )}
                 </div>
         </>
