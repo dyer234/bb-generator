@@ -47,7 +47,7 @@ function findAllTwoSymbolElements(text) {
             currentWordResult = [];
             splitWords.slice(0, rightIDX).map((i) => {
                 let newCharKey = uuidv4()
-                currentWordResult.push(<UnstyledCharacter symbol={i} charKey={charKey}/>);
+                currentWordResult.push(<UnstyledCharacter symbol={i} charKey={newCharKey}/>);
             });
 
             // just increment once for the next iteration because the next two characters could also be a symbol
